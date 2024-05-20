@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Default Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #e0f7fa;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            background-color: rgba(224, 247, 250, 0.85);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .result {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2 class="text-center">Credit Default Prediction</h2>
+        <form id="prediction-form">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="SEX">Sex</label>
+                    <select class="form-control" id="SEX" name="SEX">
+                        <option value="1">Male</option>
+                        <option value="2">Female</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="EDUCATION">Education</label>
+                    <select class="form-control" id="EDUCATION" name="EDUCATION">
+                        <option value="1">Graduate school</option>
+                        <option value="2">University</option>
+                        <option value="3">High school</option>
+                        <option value="4">Others</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="MARRIAGE">Marriage</label>
+                    <select class="form-control" id="MARRIAGE" name="MARRIAGE">
+                        <option value="1">Married</option>
+                        <option value="2">Single</option>
+                        <option value="3">Others</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="LIMIT_BAL">Credit Limit Balance</label>
+                    <input type="number" class="form-control" id="LIMIT_BAL" name="LIMIT_BAL" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="PAY_1">Repayment Status (September)</label>
+                    <input type="number" class="form-control" id="PAY_1" name="PAY_1" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="PAY_2">Repayment Status (August)</label>
+                    <input type="number" class="form-control" id="PAY_2" name="PAY_2" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="PAY_3">Repayment Status (July)</label>
+                    <input type="number" class="form-control" id="PAY_3" name="PAY_3" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="PAY_4">Repayment Status (June)</label>
+                    <input type="number" class="form-control" id="PAY_4" name="PAY_4" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="PAY_5">Repayment Status (May)</label>
+                    <input type="number" class="form-control" id="PAY_5" name="PAY_5" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="PAY_6">Repayment Status (April)</label>
+                    <input type="number" class="form-control" id="PAY_6" name="PAY_6" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="BILL_AMT1">Bill Amount (September)</label>
+                    <input type="number" class="form-control" id="BILL_AMT1" name="BILL_AMT1" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="BILL_AMT2">Bill Amount (August)</label>
+                    <input type="number" class="form-control" id="BILL_AMT2" name="BILL_AMT2" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="BILL_AMT3">Bill Amount (July)</label>
+                    <input type="number" class="form-control" id="BILL_AMT3" name="BILL_AMT3" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="BILL_AMT4">Bill Amount (June)</label>
+                    <input type="number" class="form-control" id="BILL_AMT4" name="BILL_AMT4" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="BILL_AMT5">Bill Amount (May)</label>
+                    <input type="number" class="form-control" id="BILL_AMT5" name="BILL_AMT5" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="BILL_AMT6">Bill Amount (April)</label>
+                    <input type="number" class="form-control" id="BILL_AMT6" name="BILL_AMT6" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="PAY_AMT1">Payment Amount (September)</label>
+                    <input type="number" class="form-control" id="PAY_AMT1" name="PAY_AMT1" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="PAY_AMT2">Payment Amount (August)</label>
+                    <input type="number" class="form-control" id="PAY_AMT2" name="PAY_AMT2" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="PAY_AMT3">Payment Amount (July)</label>
+                    <input type="number" class="form-control" id="PAY_AMT3" name="PAY_AMT3" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="PAY_AMT4">Payment Amount (June)</label>
+                    <input type="number" class="form-control" id="PAY_AMT4" name="PAY_AMT4" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="PAY_AMT5">Payment Amount (May)</label>
+                    <input type="number" class="form-control" id="PAY_AMT5" name="PAY_AMT5" required>
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="PAY_AMT6">Payment Amount (April)</label>
+                    <input type="number" class="form-control" id="PAY_AMT6" name="PAY_AMT6" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Predict</button>
+        </form>
+        <div class="result">
+            <h4 id="result-message" class="text-center"></h4>
+        </div>
+    </div>
+    <script>
+        document.getElementById('prediction-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify([data])
+            })
+            .then(response => response.json())
+            .then(result => {
+                document.getElementById('result-message').textContent = result[0];
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>
